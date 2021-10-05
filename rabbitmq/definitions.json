@@ -1,0 +1,82 @@
+{
+   "rabbit_version":"3.8.19",
+   "rabbitmq_version":"3.8.19",
+   "product_name":"RabbitMQ",
+   "product_version":"3.8.19",
+   "users":[
+      {
+         "name":"guest",
+         "password_hash":"+EeUEEI/0NQvMwPrp/cqpZ9nBE1V04Z0l4Z62Stxis6tmnBr",
+         "hashing_algorithm":"rabbit_password_hashing_sha256",
+         "tags":"administrator",
+         "limits":{
+            
+         }
+      }
+   ],
+   "vhosts":[
+      {
+         "name":"/"
+      }
+   ],
+   "permissions":[
+      {
+         "user":"guest",
+         "vhost":"/",
+         "configure":".*",
+         "write":".*",
+         "read":".*"
+      }
+   ],
+   "topic_permissions":[
+      
+   ],
+   "parameters":[
+      
+   ],
+   "global_parameters":[
+      {
+         "name":"internal_cluster_id",
+         "value":"rabbitmq-cluster-id-sCe03Vcr5buS4w-8iX6t_Q"
+      }
+   ],
+   "policies":[
+      
+   ],
+   "queues":[
+      {
+         "name":"MyQueue",
+         "vhost":"/",
+         "durable":true,
+         "auto_delete":false,
+         "arguments":{
+            "x-queue-type":"classic"
+         }
+      }
+   ],
+   "exchanges":[
+      {
+         "name":"MyTopicExchange",
+         "vhost":"/",
+         "type":"topic",
+         "durable":true,
+         "auto_delete":false,
+         "internal":false,
+         "arguments":{
+            
+         }
+      }
+   ],
+   "bindings":[
+      {
+         "source":"MyTopicExchange",
+         "vhost":"/",
+         "destination":"MyQueue",
+         "destination_type":"queue",
+         "routing_key":"MyTag",
+         "arguments":{
+            
+         }
+      }
+   ]
+}
