@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  
+  haproxy:
+    image: haproxy-base
+    #build:
+    #  context: ./haproxy
+    #  dockerfile: dockerfile    
+    hostname: haproxy
+    volumes: 
+      - ./tmp/data:/data    
+    deploy:
+      replicas: 3
+    ports:
+      - "1936:1936"
+      - "8083:8083"
+      - "8082:8082"    
+
+networks:
+  default:
+    external: true
+    name: rabbitHA_network

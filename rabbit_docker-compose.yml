@@ -1,0 +1,48 @@
+version: '4'
+services:
+  rabbitmq1:
+    container_name: rabbitmq1
+    image: rabbitmq-cluster-base
+    #build:
+    #    context: ./rabbitmq_base
+    #    dockerfile: dockerfile  
+    restart: always
+    environment:
+      - TZ=UTC
+    hostname: rabbitmq1  
+    volumes:
+      - ./data:/var/lib/rabbitmq/mnesia     
+      
+  rabbitmq2:
+    container_name: rabbitmq2
+    image: rabbitmq-cluster-base
+    #build:
+    #    context: ./rabbitmq_base
+    #    dockerfile: dockerfile      
+    restart: always
+    environment:
+      - TZ=UTC
+    hostname: rabbitmq2    
+    volumes:
+      - ./data:/var/lib/rabbitmq/mnesia      
+      
+  rabbitmq3:
+    container_name: rabbitmq3
+    image: rabbitmq-cluster-base
+    #build:
+    #    context: ./rabbitmq_base
+    #    dockerfile: dockerfile          
+    restart: always
+    environment:
+      - TZ=UTC
+    hostname: rabbitmq3    
+    volumes:
+      - ./data:/var/lib/rabbitmq/mnesia            
+
+networks:
+  default:
+    external: true
+    name: rabbitHA_network
+    
+volumes:
+  data:
